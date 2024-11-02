@@ -1,0 +1,62 @@
+.header {
+    position: fixed;
+    background-color: #ffffff;
+    left: 0;
+    top: 0;
+    right: 0;
+    padding: 18px 0;
+    height: 80px;
+    border-bottom: 1px solid #d9d9d9;
+    z-index: 9999999;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.1);
+}
+
+.btnCommon {
+    background-color: var(--primaryText);
+    font-size: 14px;
+    color: var(--background);
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: -.02em;
+    font-stretch: 110%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding: 0 32px;
+    border: 1px solid var(--backgroundLtYlw);
+    border-radius: 10px;
+    transition: all .3s ease 0s;
+  }
+  
+  .btnLink {
+    background-color: var(--primaryText);
+    font-size: 14px;
+    color: var(--background);
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: -.02em;
+    font-stretch: 110%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding: 0 32px;
+    border: 1px solid var(--backgroundLtYlw);
+    border-radius: 10px;
+    transition: all .3s ease 0s;
+  }
+
+  .btnLink:hover {
+    background-color: var(--primaryText);
+    color: var(--blackText);
+    border-color: var(--backgroundLtYlw);
+    box-shadow: 0 0 20px 0 rgba(255,180,0,.6);
+  }
+
+  .btnCommon:hover {
+    background-color: var(--primaryText);
+    color: var(--blackText);
+    border-color: var(--backgroundLtYlw);
+    box-shadow: 0 0 20px 0 rgba(255,180,0,.6);
+  }

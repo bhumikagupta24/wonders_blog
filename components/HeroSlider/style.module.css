@@ -1,0 +1,42 @@
+.heroBorder {
+  padding: 12px;
+  border: 1px solid var(--primaryDarkBorder);
+  border-radius: 21px;
+}
+
+.lftDiv {
+  display: grid;
+}
+
+.sldHdg h2 a {
+  color: var(--primary);
+}
+
+.sldHdg h2 a:hover {
+  color: var(--primaryBg);
+}
+
+.sldHdg > div {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.6;
+  padding-top: 20px;
+  -moz-column-count: 1;
+  column-count: 1;
+  transition: all 0.3s ease 0s;
+}
+
+.sldImg img {
+  position: relative;
+  border: 1px solid var(--primaryLightBorder);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+
+@media (max-width: 768px) {
+  .sldImg img {
+    height: 300px;
+    object-fit: cover;
+  }
+}

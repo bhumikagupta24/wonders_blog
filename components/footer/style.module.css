@@ -1,0 +1,14 @@
+.footer {
+    background-color: var(--secondaryBg);
+    padding: 20px 0;
+}
+
+.ftrTxt p {
+  color: var(--primaryText);
+  margin: 0;
+}
+
+.ftrTxt p a {
+  color: var(--mutedText);
+  margin: 0;
+}
