@@ -3,12 +3,17 @@ import { useRouter } from 'next/router';
 import { addPost, editPost, getPosts } from '../data/posts';
 import styled from '@/styles/CreatePost.module.css';
 import Image from 'next/image';
-import InputCKEditor from '@/components/InputCKEditor';
+import dynamic from 'next/dynamic';
 import Button from '@/components/Button';
 import Form from '@/components/Form';
 import FormInput from '@/components/FormInput';
 import Header from '@/components/header';
 import { Editor } from '@ckeditor/ckeditor5-core';
+
+const InputCKEditor = dynamic(
+  () => import('@/components/InputCKEditor'),
+  { ssr: false }
+);
 
 const CreatePost = () => {
   const router = useRouter();
@@ -21,17 +26,20 @@ const CreatePost = () => {
   const [imagePreview, setImagePreview] = useState('');
 
   useEffect(() => {
-    if (id) {
-      const posts = getPosts();
-      const existingPost = posts.find((post: { id: number; }) => post.id === Number(id));
-      if (existingPost) {
-        setTitle(existingPost.title);
-        setDescription(existingPost.description);
-        setContent(existingPost.content);
-        setImage(existingPost.image);
-        setImagePreview(existingPost.image);
+    async function fetchPost() {
+      if (id) {
+        const posts = await getPosts();
+        const existingPost = posts?.find((post: { id: number }) => post.id === Number(id));
+        if (existingPost) {
+          setTitle(existingPost.title);
+          setDescription(existingPost.description);
+          setContent(existingPost.content);
+          setImage(existingPost.image);
+          setImagePreview(existingPost.image);
+        }
       }
     }
+    fetchPost();
   }, [id]);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => { 
@@ -89,7 +97,7 @@ const CreatePost = () => {
           />
           <InputCKEditor
             data={content}
-            onChange={(event: unknown, editor: unknown) => {
+            onChange={(event: unknown, editor) => {
               const data = (editor as Editor).getData();
               setContent(data);
             }}

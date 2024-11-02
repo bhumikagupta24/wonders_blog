@@ -1,14 +1,22 @@
 const LOCAL_STORAGE_KEY = 'blogPosts';
 
 export const getPosts = () => {
-  if (typeof window === 'undefined') return []; // Check if we're on the server
-  const posts = localStorage.getItem(LOCAL_STORAGE_KEY);
-  return posts ? JSON.parse(posts) : [];
+  try {
+    if (typeof localStorage === 'undefined') return [];
+    const posts = localStorage.getItem(LOCAL_STORAGE_KEY);
+    return posts ? JSON.parse(posts) : [];
+  } catch {
+    return [];
+  }
 };
 
 export const savePosts = (posts: unknown) => {
-  if (typeof window !== 'undefined') {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(posts));
+  try {
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(posts));
+    }
+  } catch {
+    // Handle error silently
   }
 };
 
